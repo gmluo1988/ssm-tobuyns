@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gmluo.bebetterme.dao.BeBetterDao">
+    <resultMap id="BaseResultMap" type="cn.gmluo.bebetterme.model.BeBetter">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="Cola" jdbcType="INTEGER" property="cola"/>
+        <result column="Fattyfood" jdbcType="INTEGER" property="fattyfood"/>
+        <result column="Snacks" jdbcType="INTEGER" property="snacks"/>
+        <result column="Badword" jdbcType="INTEGER" property="badword"/>
+        <result column="Complain" jdbcType="INTEGER" property="complain"/>
+        <result column="Stayuplate" jdbcType="INTEGER" property="stayuplate"/>
+        <result column="Readbook" jdbcType="INTEGER" property="readbook"/>
+        <result column="Learnskills" jdbcType="INTEGER" property="learnskills"/>
+        <result column="Developskills" jdbcType="INTEGER" property="developskills"/>
+        <result column="Running" jdbcType="REAL" property="running"/>
+        <result column="Keep" jdbcType="INTEGER" property="keep"/>
+        <result column="Breakfast" jdbcType="INTEGER" property="breakfast"/>
+        <result column="Lunch" jdbcType="INTEGER" property="lunch"/>
+        <result column="Otherfood" jdbcType="INTEGER" property="otherfood"/>
+        <result column="Score" jdbcType="INTEGER" property="score"/>
+        <result column="DataChange_CreateTime" jdbcType="TIMESTAMP" property="datachangeCreatetime"/>
+        <result column="DataChange_LastTime" jdbcType="TIMESTAMP" property="datachangeLasttime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, Cola, Fattyfood, Snacks, Badword, Complain, Stayuplate, Readbook, Learnskills,
+    Developskills, Running, Keep, Breakfast, Lunch, Otherfood, Score, DataChange_CreateTime,
+    DataChange_LastTime
+  </sql>
+    <insert id="insert" parameterType="cn.gmluo.bebetterme.model.BeBetter">
+    insert into bebetter (id, Cola, Fattyfood,
+      Snacks, Badword, Complain,
+      Stayuplate, Readbook, Learnskills,
+      Developskills, Running, Keep,
+      Breakfast, Lunch, Otherfood,
+      Score, DataChange_CreateTime, DataChange_LastTime
+      )
+    values (#{id,jdbcType=INTEGER}, #{cola,jdbcType=INTEGER}, #{fattyfood,jdbcType=INTEGER},
+      #{snacks,jdbcType=INTEGER}, #{badword,jdbcType=INTEGER}, #{complain,jdbcType=INTEGER},
+      #{stayuplate,jdbcType=INTEGER}, #{readbook,jdbcType=INTEGER}, #{learnskills,jdbcType=INTEGER},
+      #{developskills,jdbcType=INTEGER}, #{running,jdbcType=REAL}, #{keep,jdbcType=INTEGER},
+      #{breakfast,jdbcType=INTEGER}, #{lunch,jdbcType=INTEGER}, #{otherfood,jdbcType=INTEGER},
+      #{score,jdbcType=INTEGER}, #{datachangeCreatetime,jdbcType=TIMESTAMP}, #{datachangeLasttime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="cn.gmluo.bebetterme.model.BeBetter">
+        insert into bebetter
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="cola != null">
+                Cola,
+            </if>
+            <if test="fattyfood != null">
+                Fattyfood,
+            </if>
+            <if test="snacks != null">
+                Snacks,
+            </if>
+            <if test="badword != null">
+                Badword,
+            </if>
+            <if test="complain != null">
+                Complain,
+            </if>
+            <if test="stayuplate != null">
+                Stayuplate,
+            </if>
+            <if test="readbook != null">
+                Readbook,
+            </if>
+            <if test="learnskills != null">
+                Learnskills,
+            </if>
+            <if test="developskills != null">
+                Developskills,
+            </if>
+            <if test="running != null">
+                Running,
+            </if>
+            <if test="keep != null">
+                Keep,
+            </if>
+            <if test="breakfast != null">
+                Breakfast,
+            </if>
+            <if test="lunch != null">
+                Lunch,
+            </if>
+            <if test="otherfood != null">
+                Otherfood,
+            </if>
+            <if test="score != null">
+                Score,
+            </if>
+            <if test="datachangeCreatetime != null">
+                DataChange_CreateTime,
+            </if>
+            <if test="datachangeLasttime != null">
+                DataChange_LastTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="cola != null">
+                #{cola,jdbcType=INTEGER},
+            </if>
+            <if test="fattyfood != null">
+                #{fattyfood,jdbcType=INTEGER},
+            </if>
+            <if test="snacks != null">
+                #{snacks,jdbcType=INTEGER},
+            </if>
+            <if test="badword != null">
+                #{badword,jdbcType=INTEGER},
+            </if>
+            <if test="complain != null">
+                #{complain,jdbcType=INTEGER},
+            </if>
+            <if test="stayuplate != null">
+                #{stayuplate,jdbcType=INTEGER},
+            </if>
+            <if test="readbook != null">
+                #{readbook,jdbcType=INTEGER},
+            </if>
+            <if test="learnskills != null">
+                #{learnskills,jdbcType=INTEGER},
+            </if>
+            <if test="developskills != null">
+                #{developskills,jdbcType=INTEGER},
+            </if>
+            <if test="running != null">
+                #{running,jdbcType=REAL},
+            </if>
+            <if test="keep != null">
+                #{keep,jdbcType=INTEGER},
+            </if>
+            <if test="breakfast != null">
+                #{breakfast,jdbcType=INTEGER},
+            </if>
+            <if test="lunch != null">
+                #{lunch,jdbcType=INTEGER},
+            </if>
+            <if test="otherfood != null">
+                #{otherfood,jdbcType=INTEGER},
+            </if>
+            <if test="score != null">
+                #{score,jdbcType=INTEGER},
+            </if>
+            <if test="datachangeCreatetime != null">
+                #{datachangeCreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="datachangeLasttime != null">
+                #{datachangeLasttime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bebetter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.gmluo.bebetterme.model.BeBetter">
+        update bebetter
+        <set>
+            <if test="cola != null">
+                Cola = #{cola,jdbcType=INTEGER},
+            </if>
+            <if test="fattyfood != null">
+                Fattyfood = #{fattyfood,jdbcType=INTEGER},
+            </if>
+            <if test="snacks != null">
+                Snacks = #{snacks,jdbcType=INTEGER},
+            </if>
+            <if test="badword != null">
+                Badword = #{badword,jdbcType=INTEGER},
+            </if>
+            <if test="complain != null">
+                Complain = #{complain,jdbcType=INTEGER},
+            </if>
+            <if test="stayuplate != null">
+                Stayuplate = #{stayuplate,jdbcType=INTEGER},
+            </if>
+            <if test="readbook != null">
+                Readbook = #{readbook,jdbcType=INTEGER},
+            </if>
+            <if test="learnskills != null">
+                Learnskills = #{learnskills,jdbcType=INTEGER},
+            </if>
+            <if test="developskills != null">
+                Developskills = #{developskills,jdbcType=INTEGER},
+            </if>
+            <if test="running != null">
+                Running = #{running,jdbcType=REAL},
+            </if>
+            <if test="keep != null">
+                Keep = #{keep,jdbcType=INTEGER},
+            </if>
+            <if test="breakfast != null">
+                Breakfast = #{breakfast,jdbcType=INTEGER},
+            </if>
+            <if test="lunch != null">
+                Lunch = #{lunch,jdbcType=INTEGER},
+            </if>
+            <if test="otherfood != null">
+                Otherfood = #{otherfood,jdbcType=INTEGER},
+            </if>
+            <if test="score != null">
+                Score = #{score,jdbcType=INTEGER},
+            </if>
+            <if test="datachangeCreatetime != null">
+                DataChange_CreateTime = #{datachangeCreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="datachangeLasttime != null">
+                DataChange_LastTime = #{datachangeLasttime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.gmluo.bebetterme.model.BeBetter">
+    update bebetter
+    set Cola = #{cola,jdbcType=INTEGER},
+      Fattyfood = #{fattyfood,jdbcType=INTEGER},
+      Snacks = #{snacks,jdbcType=INTEGER},
+      Badword = #{badword,jdbcType=INTEGER},
+      Complain = #{complain,jdbcType=INTEGER},
+      Stayuplate = #{stayuplate,jdbcType=INTEGER},
+      Readbook = #{readbook,jdbcType=INTEGER},
+      Learnskills = #{learnskills,jdbcType=INTEGER},
+      Developskills = #{developskills,jdbcType=INTEGER},
+      Running = #{running,jdbcType=REAL},
+      Keep = #{keep,jdbcType=INTEGER},
+      Breakfast = #{breakfast,jdbcType=INTEGER},
+      Lunch = #{lunch,jdbcType=INTEGER},
+      Otherfood = #{otherfood,jdbcType=INTEGER},
+      Score = #{score,jdbcType=INTEGER},
+      DataChange_CreateTime = #{datachangeCreatetime,jdbcType=TIMESTAMP},
+      DataChange_LastTime = #{datachangeLasttime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from bebetter
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectAllReports" resultMap="BaseResultMap">
+        select * from bebetter
+         order by id desc
+    </select>
+    <select id="selectReportsByDate" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select * from bebetter
+        where DataChange_CreateTime like concat('%',#{datachangeCreatetime},'%')
+        order by id desc
+    </select>
+    <select id="selectTotalCount" resultType="java.lang.Integer">
+        select count(*) from bebetter
+    </select>
+    <select id="selectTotalCountByDate" resultType="java.lang.Integer">
+        select count(*) from bebetter
+        where DataChange_CreateTime like concat('%',#{datachangeCreatetime},'%')
+        order by id desc
+    </select>
+    <select id="selectTotalScore" resultType="java.lang.Integer">
+        select sum(Score) from bebetter
+    </select>
+</mapper>

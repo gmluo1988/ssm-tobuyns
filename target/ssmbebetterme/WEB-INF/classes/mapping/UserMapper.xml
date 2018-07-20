@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gmluo.bebetterme.dao.UserDao">
+    <resultMap id="BaseResultMap" type="cn.gmluo.bebetterme.model.User">
+        <id column="Id" jdbcType="INTEGER" property="id"/>
+        <result column="UserName" jdbcType="VARCHAR" property="username"/>
+        <result column="PassWord" jdbcType="VARCHAR" property="password"/>
+        <result column="Email" jdbcType="VARCHAR" property="email"/>
+        <result column="Birthday" jdbcType="DATE" property="birthday"/>
+        <result column="Age" jdbcType="INTEGER" property="age"/>
+        <result column="Gender" jdbcType="INTEGER" property="gender"/>
+        <result column="DataChange_LastTime" jdbcType="TIMESTAMP" property="datachangeLasttime"/>
+        <result column="DataChange_CreateTime" jdbcType="TIMESTAMP" property="datachangeCreatetime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    Id, UserName, PassWord, Email, Birthday, Age, Gender, DataChange_LastTime, DataChange_CreateTime
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where Id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectAllUsers" resultMap="BaseResultMap">
+        select * from user
+        order by id desc
+    </select>
+    <select id="selectUsersByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+         select * from user
+         where UserName like concat('%',#{username},'%')
+         order by id desc
+    </select>
+    <select id="selectTotalCount" resultType="java.lang.Integer">
+        select count(*) from user
+    </select>
+    <select id="selectTotalCountByUserName" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*) from user
+        where UserName like concat('%',#{username},'%')
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="cn.gmluo.bebetterme.model.User">
+    insert into user (Id, UserName, PassWord,
+      Email, Birthday, Age,
+      Gender, DataChange_LastTime, DataChange_CreateTime
+      )
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{email,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{age,jdbcType=INTEGER},
+      #{gender,jdbcType=INTEGER}, #{datachangeLasttime,jdbcType=TIMESTAMP}, #{datachangeCreatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="cn.gmluo.bebetterme.model.User">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                Id,
+            </if>
+            <if test="username != null">
+                UserName,
+            </if>
+            <if test="password != null">
+                PassWord,
+            </if>
+            <if test="email != null">
+                Email,
+            </if>
+            <if test="birthday != null">
+                Birthday,
+            </if>
+            <if test="age != null">
+                Age,
+            </if>
+            <if test="gender != null">
+                Gender,
+            </if>
+            <if test="datachangeLasttime != null">
+                DataChange_LastTime,
+            </if>
+            <if test="datachangeCreatetime != null">
+                DataChange_CreateTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null">
+                #{birthday,jdbcType=DATE},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=INTEGER},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=INTEGER},
+            </if>
+            <if test="datachangeLasttime != null">
+                #{datachangeLasttime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="datachangeCreatetime != null">
+                #{datachangeCreatetime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.gmluo.bebetterme.model.User">
+        update user
+        <set>
+            <if test="username != null">
+                UserName = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                PassWord = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                Email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null">
+                Birthday = #{birthday,jdbcType=DATE},
+            </if>
+            <if test="age != null">
+                Age = #{age,jdbcType=INTEGER},
+            </if>
+            <if test="gender != null">
+                Gender = #{gender,jdbcType=INTEGER},
+            </if>
+            <if test="datachangeLasttime != null">
+                DataChange_LastTime = #{datachangeLasttime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="datachangeCreatetime != null">
+                DataChange_CreateTime = #{datachangeCreatetime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where Id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.gmluo.bebetterme.model.User">
+    update user
+    set UserName = #{username,jdbcType=VARCHAR},
+      PassWord = #{password,jdbcType=VARCHAR},
+      Email = #{email,jdbcType=VARCHAR},
+      Birthday = #{birthday,jdbcType=DATE},
+      Age = #{age,jdbcType=INTEGER},
+      Gender = #{gender,jdbcType=INTEGER},
+      DataChange_LastTime = #{datachangeLasttime,jdbcType=TIMESTAMP},
+      DataChange_CreateTime = #{datachangeCreatetime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
